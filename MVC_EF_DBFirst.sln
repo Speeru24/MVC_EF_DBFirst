@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_EF_DBFirst", "MVC_EF_DBFirst\MVC_EF_DBFirst.csproj", "{2A1C06B4-5223-4851-B3D8-F2F0EC0D568B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_EF_DBFirst.Tests", "MVC_EF_DBFirst.Tests\MVC_EF_DBFirst.Tests.csproj", "{F58957C9-E6DD-430D-AF66-172DB117B016}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A1C06B4-5223-4851-B3D8-F2F0EC0D568B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A1C06B4-5223-4851-B3D8-F2F0EC0D568B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A1C06B4-5223-4851-B3D8-F2F0EC0D568B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A1C06B4-5223-4851-B3D8-F2F0EC0D568B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F58957C9-E6DD-430D-AF66-172DB117B016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F58957C9-E6DD-430D-AF66-172DB117B016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F58957C9-E6DD-430D-AF66-172DB117B016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F58957C9-E6DD-430D-AF66-172DB117B016}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

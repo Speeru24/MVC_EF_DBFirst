@@ -1,0 +1,27 @@
+﻿.header{
+    background-color:darkgreen !important;
+    color:white !important;
+}
+
+.blueBackground{
+    background-color:#428bca !important;
+    color:white !important;
+}
+
+.displaynone{
+    display:none !important;
+}
+
+.width10Percent{
+    width:10% !important;
+}
+
+.width100Percent{
+    width:100% !important;
+}
+
+.marginTop50px{
+    margin-top:50px !important;
+}
+
+

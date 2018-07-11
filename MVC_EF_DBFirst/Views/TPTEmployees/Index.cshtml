@@ -1,0 +1,130 @@
+﻿@model MVC_EF_DBFirst.ViewModels.TPTEmployeeViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<script>
+    $(document).ready(function () {
+        
+    });
+
+    function onEdit(EmpID) {
+        alert(EmpID);
+    }
+
+    function onDelete(EmpID) {
+        alert(EmpID);
+    }
+
+</script>
+
+<h2>Employees</h2>
+<div class="container">
+
+    <h3>Contract Employees</h3>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="header">
+           <tr>
+               <th class="displaynone">EmployeeID</th>
+               <th>First Name</th>
+               <th>Last Name</th>
+               <th>Gender</th>
+               <th>Hourly Pay</th>
+               <th>Hours Worked</th>
+               <th class="width10Percent">Edit</th>
+               <th class="width10Percent">Delete</th>
+           </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.ContractTPTEmployees)
+            {
+                <tr>
+                    <td class="displaynone">@item.EmployeeID</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Gender</td>
+                    <td>@item.HourlyPay</td>
+                    <td>@item.HoursWorked</td>
+                    <td class="width10Percent"><input type="button" onclick="onEdit(@item.EmployeeID)" value="Edit" class="width100Percent btn btn-primary" /></td>
+                    <td class="width10Percent"><input type="button" onclick="onDelete(@item.EmployeeID)" value="Delete" class="width100Percent btn btn-danger" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <br /><br />
+
+    <h3>Permanent Employees</h3>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="header">
+            <tr>
+                <th class="displaynone">EmployeeID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+
+                <th>Annual Salary</th>
+                <th class="width10Percent">Edit</th>
+                <th class="width10Percent">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.PermanentTPTEmployees)
+            {
+                <tr>
+                    <td class="displaynone">@item.EmployeeID</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Gender</td>
+                    <td>@item.AnnualSalary</td>
+                    <td class="width10Percent"><input type="button" onclick="onEdit(@item.EmployeeID)" value="Edit" class="width100Percent btn btn-primary" /></td>
+                    <td class="width10Percent"><input type="button" onclick="onDelete(@item.EmployeeID)" value="Delete" class="width100Percent btn btn-danger" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <br /><br />
+
+    <h3>Full Employees List</h3>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="header">
+            <tr>
+                <th class="displaynone">EmployeeID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Hourly Pay</th>
+                <th>Hours Worked</th>
+                <th>Annual Salary</th>
+                <th class="width10Percent">Edit</th>
+                <th class="width10Percent">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.tptFullEmployeeViewModel)
+            {
+                <tr>
+                    <td class="displaynone">@item.EmployeeID</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Gender</td>
+                    <td>@item.HourlyPay</td>
+                    <td>@item.HoursWorked</td>
+                    <td>@item.AnnualSalary</td>
+                    <td class="width10Percent"><input type="button" onclick="onEdit(@item.EmployeeID)" value="Edit" class="width100Percent btn btn-primary" /></td>
+                    <td class="width10Percent"><input type="button" onclick="onDelete(@item.EmployeeID)" value="Delete" class="width100Percent btn btn-danger" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+

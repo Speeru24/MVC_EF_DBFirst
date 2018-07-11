@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EF_DBFirstModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EF_DBFirstEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="spDeleteEmployees">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spInsertEmployee">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="Salary" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdateEmployee">
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="Salary" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Employees" EntityType="EF_DBFirstModel.Employee" />
+    <EntitySet Name="TPTEmployees" EntityType="EF_DBFirstModel.TPTEmployee" />
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Salary" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TPTEmployee" Abstract="false">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ContractTPTEmployee" BaseType="EF_DBFirstModel.TPTEmployee">
+    <Property Name="HourlyPay" Type="Int32" />
+    <Property Name="HoursWorked" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PermanentTPTEmployee" BaseType="EF_DBFirstModel.TPTEmployee">
+    <Property Name="AnnualSalary" Type="Int32" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EF_DBFirstModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Salary" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TPTEmployee" Abstract="false">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ContractTPTEmployee" Relationship="Self.FK__ContractT__Emplo__619B8048" FromRole="TPTEmployees" ToRole="ContractTPTEmployees" />
+    <NavigationProperty Name="PermanentTPTEmployee" Relationship="Self.FK__Permanent__Emplo__5FB337D6" FromRole="TPTEmployees" ToRole="PermanentTPTEmployees" />
+  </EntityType>
+  <EntityType Name="ContractTPTEmployee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Nullable="false" Type="Int32" />
+    <Property Name="HourlyPay" Type="Int32" />
+    <Property Name="HoursWorked" Type="Int32" />
+    <NavigationProperty Name="TPTEmployee" Relationship="Self.FK__ContractT__Emplo__619B8048" FromRole="ContractTPTEmployees" ToRole="TPTEmployees" />
+  </EntityType>
+  <EntityType Name="PermanentTPTEmployee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Nullable="false" Type="Int32" />
+    <Property Name="AnnualSalary" Type="Int32" />
+    <NavigationProperty Name="TPTEmployee" Relationship="Self.FK__Permanent__Emplo__5FB337D6" FromRole="PermanentTPTEmployees" ToRole="TPTEmployees" />
+  </EntityType>
+  <Association Name="FK__ContractT__Emplo__619B8048">
+    <End Role="TPTEmployees" Type="Self.TPTEmployee" Multiplicity="1" />
+    <End Role="ContractTPTEmployees" Type="Self.ContractTPTEmployee" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TPTEmployees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="ContractTPTEmployees">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Permanent__Emplo__5FB337D6">
+    <End Role="TPTEmployees" Type="Self.TPTEmployee" Multiplicity="1" />
+    <End Role="PermanentTPTEmployees" Type="Self.PermanentTPTEmployee" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TPTEmployees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="PermanentTPTEmployees">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EF_DBFirstEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="TPTEmployees" EntityType="Self.TPTEmployee" />
+    <EntitySet Name="ContractTPTEmployees" EntityType="Self.ContractTPTEmployee" />
+    <EntitySet Name="PermanentTPTEmployees" EntityType="Self.PermanentTPTEmployee" />
+    <AssociationSet Name="FK__ContractT__Emplo__619B8048" Association="Self.FK__ContractT__Emplo__619B8048">
+      <End Role="TPTEmployees" EntitySet="TPTEmployees" />
+      <End Role="ContractTPTEmployees" EntitySet="ContractTPTEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Permanent__Emplo__5FB337D6" Association="Self.FK__Permanent__Emplo__5FB337D6">
+      <End Role="TPTEmployees" EntitySet="TPTEmployees" />
+      <End Role="PermanentTPTEmployees" EntitySet="PermanentTPTEmployees" />
+    </AssociationSet>
+    <FunctionImport Name="spDeleteEmployees">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spInsertEmployee">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="Salary" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdateEmployee">
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="Salary" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Customers" EntityType="EF_DBFirstModel1.Customer" />
+    <EntitySet Name="Orders" EntityType="EF_DBFirstModel1.Order" />
+    <AssociationSet Name="FK__Orders__Customer__6A30C649" Association="EF_DBFirstModel1.FK__Orders__Customer__6A30C649">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Orders" Relationship="EF_DBFirstModel1.FK__Orders__Customer__6A30C649" FromRole="Customer" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="CustomerID" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="EF_DBFirstModel1.FK__Orders__Customer__6A30C649" FromRole="Order" ToRole="Customer" />
+  </EntityType>
+  <Association Name="FK__Orders__Customer__6A30C649">
+    <End Type="EF_DBFirstModel1.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="EF_DBFirstModel1.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

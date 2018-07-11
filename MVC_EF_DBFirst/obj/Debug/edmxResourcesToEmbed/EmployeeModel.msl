@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EF_DBFirstModelStoreContainer" CdmEntityContainer="EF_DBFirstEntities">
+    <FunctionImportMapping FunctionImportName="spDeleteEmployees" FunctionName="EF_DBFirstModel.Store.spDeleteEmployees" />
+    <FunctionImportMapping FunctionImportName="spInsertEmployee" FunctionName="EF_DBFirstModel.Store.spInsertEmployee" />
+    <FunctionImportMapping FunctionImportName="spUpdateEmployee" FunctionName="EF_DBFirstModel.Store.spUpdateEmployee" />
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="EF_DBFirstModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="EF_DBFirstModel.Employee">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="EF_DBFirstModel.Store.spInsertEmployee">
+            <ScalarProperty Name="Salary" ParameterName="Salary" />
+            <ScalarProperty Name="Gender" ParameterName="Gender" />
+            <ScalarProperty Name="Name" ParameterName="Name" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="EF_DBFirstModel.Store.spUpdateEmployee">
+            <ScalarProperty Name="ID" ParameterName="EmployeeId" Version="Current" />
+            <ScalarProperty Name="Salary" ParameterName="Salary" Version="Current" />
+            <ScalarProperty Name="Gender" ParameterName="Gender" Version="Current" />
+            <ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="EF_DBFirstModel.Store.spDeleteEmployees">
+            <ScalarProperty Name="ID" ParameterName="ID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPTEmployees">
+      <EntityTypeMapping TypeName="IsTypeOf(EF_DBFirstModel.TPTEmployee)">
+        <MappingFragment StoreEntitySet="TPTEmployees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(EF_DBFirstModel.PermanentTPTEmployee)">
+        <MappingFragment StoreEntitySet="PermanentTPTEmployees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="AnnualSalary" ColumnName="AnnualSalary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(EF_DBFirstModel.ContractTPTEmployee)">
+        <MappingFragment StoreEntitySet="ContractTPTEmployees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="HourlyPay" ColumnName="HourlyPay" />
+          <ScalarProperty Name="HoursWorked" ColumnName="HoursWorked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

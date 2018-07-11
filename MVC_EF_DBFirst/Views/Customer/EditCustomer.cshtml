@@ -1,0 +1,65 @@
+﻿@model MVC_EF_DBFirst.ViewModels.CustomerOrdersViewModel
+
+@{
+    ViewBag.Title = "EditCustomer";
+}
+
+@using (Html.BeginForm("SaveCustomer", "Customer", FormMethod.Post, new { id = "frmEditCustomer" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container marginTop50px form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="blueBackground">
+                    <th colspan="2">Edit Details</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr class="displaynone">
+                    <td colspan="2">@Html.HiddenFor(c => c.CustomerID, new { Id = "txtCustomerID" })
+                    @Html.HiddenFor(c => c.OrderID, new { Id = "txtOrderID" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Customer Name
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(c => c.CustomerName, new { @class = "form-control", id = "txtCustomerName" })
+                        @Html.ValidationMessageFor(c => c.CustomerName, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Contact Number</td>
+                    <td>
+                        @Html.TextBoxFor(c => c.ContactNumber, new { @class = "form-control", id = "txtContactNumber" })
+                        @Html.ValidationMessageFor(c => c.ContactNumber, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Order Date
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(c => c.OrderDate, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control", id = "txtOrderDate" })
+                        @Html.ValidationMessageFor(c => c.OrderDate, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="Back to List" class="btn btn-primary" onclick="window.location.href='/Customer/Index'" />
+                    </td>
+                    <td>
+                        <input type="submit" value="Save Customer" class="btn btn-primary" onclick="window.location.href = '/Customer/SaveCustomer'" />
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+}
+
+

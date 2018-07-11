@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EF_DBFirstModel1StoreContainer" CdmEntityContainer="EF_DBFirstEntities1">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="EF_DBFirstModel1.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPTEmployees">
+      <EntityTypeMapping TypeName="EF_DBFirstModel1.TPTEmployee">
+        <MappingFragment StoreEntitySet="TPTEmployees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContractTPTEmployees">
+      <EntityTypeMapping TypeName="EF_DBFirstModel1.ContractTPTEmployee">
+        <MappingFragment StoreEntitySet="ContractTPTEmployees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="HourlyPay" ColumnName="HourlyPay" />
+          <ScalarProperty Name="HoursWorked" ColumnName="HoursWorked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PermanentTPTEmployees">
+      <EntityTypeMapping TypeName="EF_DBFirstModel1.PermanentTPTEmployee">
+        <MappingFragment StoreEntitySet="PermanentTPTEmployees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="AnnualSalary" ColumnName="AnnualSalary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spDeleteEmployees" FunctionName="EF_DBFirstModel1.Store.spDeleteEmployees" />
+    <FunctionImportMapping FunctionImportName="spInsertEmployee" FunctionName="EF_DBFirstModel1.Store.spInsertEmployee" />
+    <FunctionImportMapping FunctionImportName="spUpdateEmployee" FunctionName="EF_DBFirstModel1.Store.spUpdateEmployee" />
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="EF_DBFirstModel1.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="EF_DBFirstModel1.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
